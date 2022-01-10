@@ -1,0 +1,33 @@
+
+<section>
+
+    <h1>Iniciar sesión</h1>
+
+    <form method='POST' action='/login'>
+
+        <div>
+            <label for="login">Login:</label>
+            <br/>
+            <input type="text" id="username" name="username" size="30" autocomplete="off"/>
+        </div>
+
+        <div>
+            <label for="password">Contraseña:</label>
+            <br/>
+            <input type="password" id="password" name="password" size="30" autocomplete="off"/>
+        </div>
+
+        <div>
+            <input name="commit" type="submit" value="Login"/>
+        </div>
+
+    </form>
+
+    <hr />
+
+    <% if (!!process.env.QUIZ_OPEN_REGISTER) { %>
+        <div>
+            <a href="/users/new">Register local account</a>
+        </div>
+    <% } %>
+</section>

@@ -1,0 +1,50 @@
+<h1>
+    Editar Producto:
+</h1>
+
+<form method="post" action="/products/<%= product.id %>?_method=PUT" enctype="multipart/form-data">
+
+    <div class="wideRow">
+        <label for="preg"  class="itemNarrow">Referencia:</label>
+        <input type="text" class="itemWide" id="preg" name="reference" value="<%= product.reference %>" placeholder="Referencia" autocomplete="off"/>
+    </div>
+    
+    
+    <div class="wideRow">
+        <label for="resp"  class="itemNarrow">Color:</label>
+        <input type="text" class="itemWide" id="resp" name="color" value="<%= product.color %>" placeholder="Color" autocomplete="off"/>
+    </div>
+    
+    <div class="wideRow">
+        <label for="preg"  class="itemNarrow">Categoría:</label>
+        <input type="text" class="itemWide" id="preg" name="category" value="<%= product.category %>" placeholder="Categoría" autocomplete="off"/>
+    </div>
+    
+    <div class="wideRow">
+        <label for="preg"  class="itemNarrow">Precio:</label>
+        <input type="text" class="itemWide" id="preg" name="price" value="<%= product.price %>" placeholder="Precio" autocomplete="off"/>
+    </div>
+    
+    <div class="wideRow">
+        <label for="preg"  class="itemNarrow">Composición:</label>
+        <input type="text" class="itemWide" id="preg" name="composition" value="<%= product.composition %>" placeholder="Composición" autocomplete="off"/>
+    </div>
+    
+    
+    <br/>
+    
+    <label for="img">Adjuntar archivo (Max size 2MB):</label>
+    <input type="file" id="img" name="image"/>
+    
+    <br />
+    
+    <% if (product.id) { %>
+        <label for="img">Mantener el archivo actual:</label>
+        <input type="checkbox" name="keepAttachment" value="1" checked>
+    <% } %>
+    
+    <br />
+            <a href="/goback" class="button">Cancelar</a>
+
+            <input type="submit" value="Guardar">
+</form>

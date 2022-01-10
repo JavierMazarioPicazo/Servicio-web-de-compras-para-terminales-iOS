@@ -1,0 +1,9 @@
+${PODS_ROOT}/Target Support Files/Pods-Approach/Pods-Approach-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework
+${BUILT_PRODUCTS_DIR}/Braintree/Braintree.framework
+${BUILT_PRODUCTS_DIR}/BraintreeDropIn/BraintreeDropIn.framework
+${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework
+${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/Braintree/PayPalDataCollector/PPRiskMagnes.framework/PPRiskMagnes
+${PODS_XCFRAMEWORKS_BUILD_DIR}/Braintree/ThreeDSecure/CardinalMobile.framework/CardinalMobile

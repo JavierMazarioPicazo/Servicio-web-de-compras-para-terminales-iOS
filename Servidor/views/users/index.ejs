@@ -1,0 +1,31 @@
+<h1>
+    Usuarios
+</h1>
+
+<table id="usersIndex">
+    <% for (var i in users) { %>
+        <tr>
+            
+
+            <td>
+                <a href="/users/<%= users[i].id %>" ><%= users[i].displayName %></a>
+                <%= users[i].isAdmin ? "(admin)" : "" %>
+            </td>
+
+            <td>
+                <% if (locals.loginUser && (locals.loginUser.isAdmin || locals.loginUser.id === users[i].id)) { %>
+                    <a href="/users/<%= users[i].id %>/edit" class="button">Editar</a>
+
+                    <a href="/users/<%= users[i].id %>?_method=DELETE"
+                       onClick="return confirm('Delete user: <%= users[i].displayName %>');"
+                       class="button">Borrar</a>
+                <% } %>
+            </td>
+
+        </tr>
+    <% } %>
+</table>
+
+<% if (locals.loginUser && locals.loginUser.isAdmin) { %>
+    <a href="/users/new" class="button">Crear nuevo usuario</a>
+<% } %>

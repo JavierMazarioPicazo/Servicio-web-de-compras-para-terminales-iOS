@@ -1,0 +1,113 @@
+<% if (!locals.loginUser) { %>
+    <h1>Iniciar sesión</h1>
+
+    <form method='POST' action='/login'>
+
+        <div>
+            <label for="login">Login:</label>
+            <br />
+            <input type="text" id="username" name="username" size="30" autocomplete="off" />
+        </div>
+
+        <div>
+            <label for="password">Contraseña:</label>
+            <br />
+            <input type="password" id="password" name="password" size="30" autocomplete="off" />
+        </div>
+
+        <div>
+            <input name="commit" type="submit" value="Login" />
+        </div>
+
+    </form>
+    <% } %>
+        <% if (locals.loginUser) { %>
+            <div class="right">
+                <form method="get" action="<%= url %>">
+                    <input type="text" name="search" value="<%= locals.search || '' %>" placeholder="Buscar producto"
+                        autocomplete="off" />
+                    <input type="submit" value="Buscar">
+
+                </form>
+            </div>
+            <h1>
+                <%= "Productos" %>:
+            </h1>
+
+            <table id="productsIndex">
+                <% for (var i in products) { %>
+                    <% var product=products[i]; %>
+                        <tr>
+                            <td>
+                                <% var attachment=product.attachment; %>
+                                    <% if (attachment) { %>
+
+                                        <a href='<%= attachment.url %>' type='<%= attachment.mime %>' target='_blank'>
+
+                                            <% if ( attachment.mime==="image/jpeg" || attachment.mime==="image/gif" ||
+                                                attachment.mime==="image/jpg" || attachment.mime==="image/png" ||
+                                                attachment.mime==="image/gif" ) { %>
+
+                                                <%- attHelper.image(attachment.url) %>
+
+                                                    <% } else if ( attachment.mime==="video/mp4" ) { %>
+
+                                                        <%- attHelper.video(attachment.url) %>
+
+                                                            <% } else if ( attachment.mime==="application/pdf" ) { %>
+
+                                                                <%- attHelper.image('/images/pdf.png') %>
+
+                                                                    <% } else { %>
+
+                                                                        <%- attHelper.image('/images/doc.png') %>
+
+                                                                            <% } %>
+                                        </a>
+                                        <% } else { %>
+                                            <img src="/images/none.png" width="100px" />
+                                            <% } %>
+                            <td>
+                                <div>
+                                    <br />
+                                    Referencia: <b>
+                                        <%= product.reference %>
+                                    </b>
+                                    <br />
+                                    Color: <b>
+                                        <%= product.color %>
+                                    </b>
+                                    <br />
+                                    Categoría: <b>
+                                        <%= product.category %>
+                                    </b>
+                                    <br />
+                                    Precio: <b>
+                                        <%= product.price %>
+                                    </b>
+                                    <br />
+                                    Composición: <b>
+                                        <%= product.composition %>
+                                    </b>
+                                </div>
+                            </td>
+
+
+                            </td>
+
+
+                            <td>
+                                <% if (locals.loginUser) { %>
+                                    <a href="/products/<%= product.id %>/edit" class="button">Editar</a>
+                                    <a href="/products/<%= product.id %>?_method=DELETE"
+                                        onClick="return confirm('Delete: <%= product.reference %>');"
+                                        class="button">Borrar</a>
+                                    <% } %>
+                            </td>
+                        </tr>
+                        <% } %>
+            </table>
+
+
+            <a href="/products/new" class="button">Crear nuevo producto</a>
+            <% } %>
